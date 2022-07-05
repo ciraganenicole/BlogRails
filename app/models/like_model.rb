@@ -1,0 +1,2 @@
+class LikeModel < ApplicationRecord
+end
