@@ -1,2 +1,0 @@
-class PostModel < ApplicationRecord
-end

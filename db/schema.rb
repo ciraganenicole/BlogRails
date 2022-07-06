@@ -10,58 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_05_112332) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_06_121936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comment_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
-    t.integer "authorId"
-    t.integer "postId"
+    t.integer "user_id"
+    t.integer "post_id"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["authorId"], name: "index_comments_on_authorId"
-    t.index ["postId"], name: "index_comments_on_postId"
-  end
-
-  create_table "like_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "authorId"
-    t.integer "postId"
+    t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["authorId"], name: "index_likes_on_authorId"
-    t.index ["postId"], name: "index_likes_on_postId"
-  end
-
-  create_table "post_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "authorId"
+    t.integer "user_id"
     t.string "title"
     t.text "text"
     t.integer "commentsCounter"
     t.integer "likesCounter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["authorId"], name: "index_posts_on_authorId"
-  end
-
-  create_table "user_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,9 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_05_112332) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "posts", column: "postId"
-  add_foreign_key "comments", "users", column: "authorId"
-  add_foreign_key "likes", "posts", column: "postId"
-  add_foreign_key "likes", "users", column: "authorId"
-  add_foreign_key "posts", "users", column: "authorId"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
+  add_foreign_key "posts", "users"
 end
