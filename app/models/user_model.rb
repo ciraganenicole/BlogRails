@@ -1,2 +1,0 @@
-class UserModel < ApplicationRecord
-end

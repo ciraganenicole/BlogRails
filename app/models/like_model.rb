@@ -1,2 +1,0 @@
-class LikeModel < ApplicationRecord
-end
