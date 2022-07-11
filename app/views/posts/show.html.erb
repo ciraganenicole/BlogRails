@@ -1,2 +1,19 @@
-<h1>Posts</h1>
-<p>Show single post information</p>
+<div class="posts-bloc">
+  <div class="user-bloc-posts">
+    <div class="user-bloc-post">
+      <h4>Post #1</h4>
+      <span class="user-post-content-comments">Comments: x, Likes: x</span>
+      <span class="user-post-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, odit
+        placeat at expedita aut sapiente! Odit earum aliquam inventore ratione
+        debitis officia nobis facere rerum! Deleniti placeat voluptatibus
+        delectus suscipit.
+      </span>
+    </div>
+    <div class="user-bloc-post-comments">
+      <% for i in 0..10 do %>
+      <span>Username: Comment <%= i %></span>
+      <% end %>
+    </div>
+  </div>
+</div>
