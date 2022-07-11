@@ -1,2 +1,34 @@
-<h1>Users</h1>
-<p>Show single user information </p>
+<div class="users-bloc">
+  <div class="user-bloc">
+    <div class="user-image"></div>
+    <div class="user-data">
+      <h4 class="user-name">User name</h4>
+      <span class="user-posts">Number of posts: </span>
+    </div>
+  </div>
+  <div class="user-bio">
+    <h4>Bio</h4>
+    <span class="user-bio-content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque iste
+      totam distinctio omnis repudiandae itaque ut atque nostrum dolorum tenetur
+      id ea eum corporis deleniti fugit non, inventore soluta natus molestias
+      eveniet eos blanditiis quos exercitationem. Iste totam commodi nostrum!
+    </span>
+  </div>
+  <div class="user-bloc-posts">
+    <% for i in 1..3 %>
+    <div class="user-bloc-post">
+      <h4>Post #<%= i %></h4>
+      <span class="user-post-content">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus
+        quisquam perspiciatis, a alias commodi unde vitae sequi dignissimos
+        inventore at aperiam, ipsum soluta aut quidem.
+      </span>
+      <span class="user-post-content-comments">Comment: x, Likes : x</span>
+    </div>
+    <% end %>
+  </div>
+  <button class="see-posts clickable">See all posts</button>
+</div>
+© 2022 GitHub, Inc.
+Terms
