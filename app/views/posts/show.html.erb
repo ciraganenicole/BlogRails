@@ -17,7 +17,9 @@
   <p class='list-comment'><%= @user.name %> : <%= comm.text %></p>
 <% end %>
 </div>
-
-
+<div class='btn-container'>
+<%= link_to 'Add a comment', new_user_post_comment_path(@user.id, @post.id), class: "see-all" %> 
+<%= button_to 'Like', user_post_likes_path(@user, @post), method: :post, class: 'see-all'%>
+</div>
  <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
 </section>

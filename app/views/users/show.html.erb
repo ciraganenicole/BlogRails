@@ -6,7 +6,7 @@
   <h1><%= @user.name %><h1>
   </div>
   <div class="user-card__email">
-  <p>Number of posts:<%= @user.posts.length %> </p>  
+  <p>Number of posts:<%= @user.postsCounter || 0 %> </p>  
   </div>
 </section>
 
@@ -18,7 +18,7 @@
   </h1>
   <p> <%= @user.bio %></p>  
 </section>
-
+   
     <% @user.posts.each_with_index do |post,index| %>
       <section class='user-section-card'>
       <div class="user-card comment-card">
