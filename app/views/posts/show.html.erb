@@ -1,19 +1,23 @@
-<div class="posts-bloc">
-  <div class="user-bloc-posts">
-    <div class="user-bloc-post">
-      <h4>Post #1</h4>
-      <span class="user-post-content-comments">Comments: x, Likes: x</span>
-      <span class="user-post-content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, odit
-        placeat at expedita aut sapiente! Odit earum aliquam inventore ratione
-        debitis officia nobis facere rerum! Deleniti placeat voluptatibus
-        delectus suscipit.
-      </span>
+<section class="user-details">
+<section class='user-section-card'>
+<div class="user-img"><h3>Post #<%= @post.id %> By <%= @user.name %></h3></div>
+  <div class="user-card">
+    <div class="user-card__name">
+    <h1>Comments <%= @post.comments.length %><h1>
     </div>
-    <div class="user-bloc-post-comments">
-      <% for i in 0..10 do %>
-      <span>Username: Comment <%= i %></span>
-      <% end %>
-    </div>
+    <div class="user-card__email">
+    <p>Likes:<%= @post.likes.length %> </p>  
   </div>
+</section>
+
+<div class='user-section-card'><%= @post.text %></div>
+
+<div class='user-section-card comment-owner'>
+<% @post.user.comments.each do |comm| %>
+  <p class='list-comment'><%= @user.name %> : <%= comm.text %></p>
+<% end %>
 </div>
+
+
+ <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
+</section>

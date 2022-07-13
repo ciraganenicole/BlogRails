@@ -1,34 +1,37 @@
-<div class="users-bloc">
-  <div class="user-bloc">
-    <div class="user-image"></div>
-    <div class="user-data">
-      <h4 class="user-name">User name</h4>
-      <span class="user-posts">Number of posts: </span>
-    </div>
+<section class="user-details">
+<section class='user-section-card'>
+<div class="user-img"><img src="<%= @user.photo %>" alt="user_photo"></div>
+<div class="user-card">
+  <div class="user-card__name">
+  <h1><%= @user.name %><h1>
   </div>
-  <div class="user-bio">
-    <h4>Bio</h4>
-    <span class="user-bio-content">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque iste
-      totam distinctio omnis repudiandae itaque ut atque nostrum dolorum tenetur
-      id ea eum corporis deleniti fugit non, inventore soluta natus molestias
-      eveniet eos blanditiis quos exercitationem. Iste totam commodi nostrum!
-    </span>
+  <div class="user-card__email">
+  <p>Number of posts:<%= @user.posts.length %> </p>  
   </div>
-  <div class="user-bloc-posts">
-    <% for i in 1..3 %>
-    <div class="user-bloc-post">
-      <h4>Post #<%= i %></h4>
-      <span class="user-post-content">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus
-        quisquam perspiciatis, a alias commodi unde vitae sequi dignissimos
-        inventore at aperiam, ipsum soluta aut quidem.
-      </span>
-      <span class="user-post-content-comments">Comment: x, Likes : x</span>
-    </div>
+</section>
+
+
+<section class='user-bio'>
+<div class="user-card">
+  <h1 class="user-card__name">
+    Bio
+  </h1>
+  <p> <%= @user.bio %></p>  
+</section>
+
+    <% @user.posts.each_with_index do |post,index| %>
+      <section class='user-section-card'>
+      <div class="user-card comment-card">
+        <div class="user-card__name">
+         <h3> Post #<%= index+1 %> </h3>
+         <h4><%= post.text %></h4>
+        </div>
+        <div class="comment__like">
+        <p>Comments:<%= @user.comments.length %> </p>  
+        <p>Likes:<%= @user.likes.length %> </p>  
+        </div>
+      </section>
     <% end %>
-  </div>
-  <button class="see-posts clickable">See all posts</button>
-</div>
-© 2022 GitHub, Inc.
-Terms
+ <%= link_to 'See all posts', user_posts_path(@user.id), class: "see-all" %>
+ <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
+</section>

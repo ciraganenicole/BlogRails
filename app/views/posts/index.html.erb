@@ -1,29 +1,34 @@
-<div class="posts-bloc">
-  <div class="user-bloc">
-    <div class="user-image"></div>
-    <div class="user-data">
-      <h2>User name</h2>
-      <span class="user-posts">Number of posts: x</span>
-    </div>
+<section class="user-details">
+<section class='user-section-card'>
+<div class="user-img"><img src="<%= @user.photo %>" alt="user_photo"></div>
+<div class="user-card">
+  <div class="user-card__name">
+  <h1><%= @user.name %><h1>
   </div>
+  <div class="user-card__email">
+  <p>Number of posts:<%= @user.posts.length %> </p>  
+  </div>
+</section>
 
-  <% for j in 1..2 %>
-    <div class="user-bloc-posts">
-      <div class="user-bloc-post">
-        <h4>Post #<%= j %></h4>
-        <span class="user-post-content">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Iste obcaecati consectetur esse quod laboriosam. Fugit.
-        </span>
-        <span class="comments-likes">Comments: x, Likes: x</span>
-      </div>
-      <div class="user-bloc-post-comments">
-        <% for i in 1..5%>
-          <span> Username: Comment <%= i %> </span>
-        <% end %>
-      </div>
+<% @post.each_with_index do |post,index| %>
+  <section class='user-section-card'>
+  <div class="user-card comment-card">
+    <div class="user-card__name">
+    <%= link_to user_post_path(@user.id,post.id) do %>
+      <h3> Post #<%= index+1 %> </h3>
+      <% end %>
+      <h4><%= post.text %></h4>
+      <h3>Comments</h3>
+      <% post.comments.each_with_index do |comment,index| %>
+        <h4>Comment #<%= index+1 %>:<%= comment.text %></h4>
+      <% end %>
     </div>
-  <% end %>
-
-  <button class="pagination clickable">Pagination</button>
-</div>
+    <div class="comment__like">
+    <p>Comments:<%= post.comments.length %> </p>  
+    <p>Likes:<%= post.likes.length %> </p>  
+    </div>
+  </section>
+<% end %>
+ <%# <%= link_to 'See all posts', user_posts_path(@user.id), class: "see-all" %> %>
+ <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
+</section>
