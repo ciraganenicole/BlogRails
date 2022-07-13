@@ -1,0 +1,24 @@
+
+<section class="comment-container">
+  <div class='comm-card'>
+  <h1>New Comment</h1>
+    <%= form_with(model: comment, url: { action: "create" }) do |form| %>
+        <% if comment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(comment.errors.count, "error") %> unable to save this comment:</h2>
+            <ul>
+              <% comment.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <%= form.text_area :text, class: "comment-form" %>
+        </div>
+        <div class="actions">
+          <%= form.submit class: 'see-all' %>
+        </div>
+      <% end %>
+  </div>
+</section>
