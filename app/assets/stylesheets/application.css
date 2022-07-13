@@ -13,3 +13,103 @@
  *= require_tree .
  *= require_self
  */
+ .user-img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-section-card,
+  .users-bloc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 15px;
+    border-radius: 10px;
+    width: 60rem;
+  }
+  
+  .users,
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    row-gap: 20px;
+  }
+  
+  .user-bio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px 15px;
+    border-radius: 10px;
+    width: 60rem;
+  }
+  
+  .see-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    width: 10rem;
+    height: 3rem;
+    background-color: blueviolet;
+    border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .see-all:hover {
+    background-color: #f5f5f5;
+    color: blueviolet;
+  }
+  
+  .comment__like {
+    display: flex;
+    column-gap: 30px;
+    justify-content: flex-end;
+  }
+  
+  .comment-card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .copy-right {
+    text-align: center;
+  }
+  
+  .post-p {
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+  }
+  
+  .comment-owner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .list-comment {
+    margin-right: auto;
+  }
