@@ -1,34 +1,34 @@
 <section class="user-details">
 <section class='user-section-card'>
 <div class="user-img"><img src="<%= @user.photo %>" alt="user_photo"></div>
-<div class="user-card">
-  <div class="user-card__name">
-  <h1><%= @user.name %><h1>
-  </div>
-  <div class="user-card__email">
-  <p>Number of posts:<%= @user.posts.length %> </p>  
+  <div class="user-card">
+    <div class="user-card__name">
+    <h1><%= @user.name %><h1>
+    </div>
+    <div class="user-card__email">
+    <p>Number of posts:<%= @user.posts.length %> </p>  
   </div>
 </section>
-
-<% @post.each_with_index do |post,index| %>
-  <section class='user-section-card'>
-  <div class="user-card comment-card">
-    <div class="user-card__name">
-    <%= link_to user_post_path(@user.id,post.id) do %>
-      <h3> Post #<%= index+1 %> </h3>
-      <% end %>
-      <h4><%= post.text %></h4>
-      <h3>Comments</h3>
-      <% post.comments.each_with_index do |comment,index| %>
-        <h4>Comment #<%= index+1 %>:<%= comment.text %></h4>
-      <% end %>
-    </div>
-    <div class="comment__like">
-    <p>Comments:<%= post.comments.length %> </p>  
-    <p>Likes:<%= post.likes.length %> </p>  
-    </div>
-  </section>
+   
+<% @post.each do |post| %>
+  <%= link_to user_post_path(@user.id,post.id),  class: "post-p" do %>
+    <section class='user-section-card'>
+        <div class="user-card comment-card">
+          <div class="user-card__name">
+            <%= post.text %>
+            <h3>Comments</h3>
+            <% post.comments.each do |comm| %>
+              <h4>Comment# <%= comm.id %>:<%= comm.text %></h4>
+            <% end %>
+          </div>
+          <div class="comment__like">
+            <p>Comments : <%= post.comments.length %> </p>  
+            <p>Likes:<%= post.likes.length %> </p>  
+          </div>
+        <div>
+    </section>
+   <% end %>
 <% end %>
- <%# <%= link_to 'See all posts', user_posts_path(@user.id), class: "see-all" %> %>
+ <%= link_to 'Create new post', new_user_post_path(@user.id), class: "see-all" %> 
  <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
 </section>
