@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'John', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Random bio', postsCounter: 2) }
+  subject { User.new(name: 'gloire', email: 'gloire@gmail.com', password: '123456', password_confirmation: '123456') }
 
   before { subject.save }
 
@@ -11,6 +11,11 @@ RSpec.describe User, type: :model do
 
   it 'name should be present' do
     subject.name = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'should not use an existing email' do
+    subject.email = User.first.email
     expect(subject).to_not be_valid
   end
 end

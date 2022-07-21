@@ -23,3 +23,28 @@
 </div>
  <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
 </section>
+<section class="user-details">
+<section class='user-section-card'>
+<div class="user-img"><h3>Post #<%= @post.id %> By <%= @user.name %></h3></div>
+  <div class="user-card">
+    <div class="user-card__name">
+    <h1>Comments <%= @post.commentsCounter %><h1>
+    </div>
+    <div class="user-card__email">
+    <p>Likes:<%= @post.likesCounter %> </p>  
+  </div>
+</section>
+
+<div class='user-section-card'><%= @post.text %></div>
+
+<div class='user-section-card comment-owner'>
+<% @post.user.comments.each do |comm| %>
+  <p class='list-comment'><%= @user.name %> : <%= comm.text %></p>
+<% end %>
+</div>
+<div class='btn-container'>
+<%= link_to 'Add a comment', new_user_post_comment_path(@user.id, @post.id), class: "see-all" %> 
+<%= button_to 'Like', user_post_likes_path(@user, @post), method: :post, class: 'see-all'%>
+</div>
+ <p class="copy-right">© 2022 GitHub, Inc. Terms</p>
+</section>
