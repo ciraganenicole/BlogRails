@@ -10,24 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_18_152357) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_225340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "citie", id: false, force: :cascade do |t|
-    t.string "name", limit: 80
-    t.point "location"
-  end
-
-  create_table "cities", id: false, force: :cascade do |t|
-    t.string "name", limit: 80
-    t.point "location"
-  end
-
-  create_table "comment_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -39,11 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_152357) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "like_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -51,11 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_152357) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "post_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -69,20 +44,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_152357) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_models", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "photo"
     t.text "bio"
     t.integer "postsCounter", default: 0
+    t.string "Email"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
-    t.string "password"
+    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -94,31 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_152357) do
     t.string "role", default: "user"
     t.string "authentication_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "weat", id: false, force: :cascade do |t|
-    t.string "city", limit: 80
-    t.integer "temp_lo"
-    t.integer "temp_hi"
-    t.float "prcp"
-    t.date "date"
-  end
-
-  create_table "weath", id: false, force: :cascade do |t|
-    t.string "city", limit: 80
-    t.integer "temp_lo"
-    t.integer "temp_hi"
-    t.float "prcp"
-    t.date "date"
-  end
-
-  create_table "weather", id: false, force: :cascade do |t|
-    t.string "city", limit: 80
-    t.integer "temp_lo"
-    t.integer "temp_hi"
-    t.float "prcp"
-    t.date "date"
   end
 
   add_foreign_key "comments", "posts"
