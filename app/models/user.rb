@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def recent_post
     posts.last(3)
   end
+
+  def add_token
+    update_column(:authentication_token, ApiHelper::JsonWebToken.encode(email))
+  end
 end
