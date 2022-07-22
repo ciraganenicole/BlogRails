@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = @user = User.includes(posts: %i[comments likes]).find_by(id: params[:user_id])
     @post = @user.posts
@@ -25,6 +27,19 @@ class PostsController < ApplicationController
     else
       render :new
       flash[:alert] = 'Failed to create a post!'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id]) # current_user
+    post = Post.find(params[:id])
+
+    if post.destroy
+      flash[:success] = 'Post deleted successfully'
+      redirect_to user_posts_path(@user)
+    else
+      flash.now[:error] = 'Error: Post could not be deleted'
+      redirect_to user_post_path(@user, post)
     end
   end
 

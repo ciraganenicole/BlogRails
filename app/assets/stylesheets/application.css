@@ -97,7 +97,7 @@
 }
 
 .post-p {
-  text-decoration: none;
+  /* text-decoration: none; */
   margin-left: auto;
   margin-right: auto;
   display: flex;
