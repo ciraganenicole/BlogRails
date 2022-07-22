@@ -1,0 +1,11 @@
+<p>Welcome <%= @email %>!</p>
+<p>You can confirm your account email through the link below:</p>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+7:00
+app/views/devise/mailer/email_changed.erb
+<p>Hello <%= @email %>!</p>
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
+<% else %>
+  <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
+<% end %>

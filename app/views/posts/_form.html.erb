@@ -1,5 +1,6 @@
-<section class="w-50 mx-auto my-5">
-
+<section class="comment-container">
+<div class='comm-card'>
+<h1 class="mx-auto mt-5 w-25">New Post</h1>
 <%= form_with(model: post, url: { action: "create" }) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -11,20 +12,22 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div class='input-container'>
+<div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title,  class: "form-control" %>
+    <%= form.text_field :title, class: "comment-form-2" %>
   </div>
 
   <div class="field">
     <%= form.label :text %>
-    <%= form.text_area :text, class: "form-control"%>
+    <%= form.text_field :text, class: "comment-form-2"%>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-dark my-3"%>
+    <%= form.submit class: "see-all"%>
   </div>
+</div>
+  
 <% end %>
-
+</div>
 </section>

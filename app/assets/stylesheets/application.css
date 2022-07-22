@@ -138,3 +138,15 @@
   height: 5rem;
   width: 20rem;
 }
+
+.comment-form-2 {
+  height: 2rem;
+  width: 20rem;
+  border-radius: 10px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}

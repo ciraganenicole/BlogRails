@@ -17,13 +17,13 @@
           <div class="user-card__name">
             <%= post.text %>
             <h3>Comments</h3>
-            <% post.comments.each do |comm| %>
+            <% @user.comments.each do |comm| %>
               <h4>Comment# <%= comm.id %>:<%= comm.text %></h4>
             <% end %>
           </div>
           <div class="comment__like">
-            <p>Comments : <%= post.comments.length %> </p>  
-            <p>Likes:<%= post.likes.length %> </p>  
+            <p>Comments : <%= @user.comments.length %> </p>  
+            <p>Likes:<%= @user.likes.length %> </p>  
           </div>
         <div>
     </section>

@@ -24,7 +24,10 @@
       <div class="user-card comment-card">
         <div class="user-card__name">
          <h3> Post #<%= index+1 %> </h3>
+        
+        <%= link_to user_post_path(@user.id,post.id),  class: "post-p" do %> 
          <h4><%= post.text %></h4>
+        <% end %>
         </div>
         <div class="comment__like">
         <p>Comments:<%= @user.comments.length %> </p>  

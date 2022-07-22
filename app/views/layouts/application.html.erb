@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBlog</title>
+    <title>BlogApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "application", media: "all","data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
+      <div class="login">
+ <% if user_signed_in? %>
+  <strong><%= current_user.name %></strong>
+  <strong><%= current_user.email %></strong>
+   <%= link_to 'All users', root_path %>
+  <%= link_to 'Edit profile', edit_user_registration_path %> 
+  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% else %>
+   <%= link_to 'All users', root_path %>
+  <%= link_to "Sign up", new_user_registration_path %> 
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+  <p class='notice'><%= notice %></p>
+  <p class='alert'><%= alert %></p>
     <%= yield %>
   </body>
 </html>
