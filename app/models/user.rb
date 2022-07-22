@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  attr_accessor :name , :email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,10 +12,5 @@ class User < ApplicationRecord
 
   def recent_post
     posts.last(3)
-  end
-  Roles = [ :admin , :default ]
-
-  def is?( requested_role )
-    self.role == requested_role.to_s
   end
 end

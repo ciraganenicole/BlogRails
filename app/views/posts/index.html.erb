@@ -33,7 +33,7 @@
             <p>Likes:<%= @user.likes.length %> </p> 
           </div>
           <div class="actions">
-          <% if can? :destroy, @post %>
+          <% if can? :destroy, post %>
             <%= form_with url: user_post_path(@user, post), method: :delete do %>
               <button class="custom-button">Delete</button>
             <% end %>

@@ -6,6 +6,19 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  
+  config.debug_exception_response_format = :default  #added
+  config.action_mailer.delivery_method = :letter_opener #added
+
+  config.after_initialize do
+    Bullet.enable        = true
+    # Bullet.alert         = true
+    Bullet.bullet_logger = true
+    Bullet.console       = true
+    Bullet.rails_logger  = true
+    # Bullet.add_footer    = true
+  end
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -38,9 +51,12 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  # force the confirmation mail to be delivered 
+  config.action_mailer.perform_deliveries = true
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -67,4 +83,13 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_mailer.smtp_settings ={
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "",
+    password: "",
+  }
 end
