@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "UserIndices", type: :feature do
   before(:each) do
     visit new_user_session_path
-    fill_in 'Email', with: 'nic@gmail.com'
-    fill_in 'Password', with: '1221212'
+    fill_in 'Email', with: 'jane@gmail.com'
+    fill_in 'Password', with: '232323'
     click_button 'Log in'
   end
 
@@ -18,7 +18,7 @@ RSpec.feature "UserIndices", type: :feature do
   end
 
   it 'View a specific user post' do
-    user = User.all.first.id
+    user = User.all.first
     expect(page).to have_content("Number of posts:#{user.postsCounter || 0}")
   end
 

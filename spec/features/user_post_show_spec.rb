@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "UserPostShows", type: :feature do
   before(:each) do
     visit new_user_session_path
-    fill_in 'Email', with: 'nic@gmail.com'
-    fill_in 'Password', with: '121212'
+    fill_in 'Email', with: 'jane@gmail.com'
+    fill_in 'Password', with: '232323'
     click_button 'Log in'
     user = User.all.first
     first(:link, user.name).click
