@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Logins", type: :feature do
+RSpec.feature 'Logins', type: :feature do
   before(:each) do
     visit root_path
     click_link 'Login'

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.feature "UserPostShows", type: :feature do
+RSpec.feature 'UserPostShows', type: :feature do
   before(:each) do
     visit new_user_session_path
     fill_in 'Email', with: 'jane@gmail.com'

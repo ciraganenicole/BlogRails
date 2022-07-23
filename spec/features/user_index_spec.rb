@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "UserIndices", type: :feature do
+RSpec.feature 'UserIndices', type: :feature do
   before(:each) do
     visit new_user_session_path
     fill_in 'Email', with: 'jane@gmail.com'
