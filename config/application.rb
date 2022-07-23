@@ -7,7 +7,6 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 module RailsBlog
-  config.api_only = true
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
