@@ -83,5 +83,4 @@ class ApiController < ApplicationController
         false
       end
     end
-  end
-  
+end
