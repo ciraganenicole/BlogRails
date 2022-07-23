@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts, class_name: 'Post', foreign_key: 'user_id', dependent: :destroy
@@ -9,8 +7,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :postsCounter, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  after_save :add_token
 
   def recent_post
     posts.last(3)
+  end
+
+  def add_token
+    update_column(:authentication_token, ApiHelper::JsonWebToken.encode(email))
   end
 end
