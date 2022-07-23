@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-respond_to :json, :html
+  respond_to :json, :html
   protect_from_forgery unless: -> { request.format.json? }
   before_action :update_allowed_parameters, if: :devise_controller?
   before_action :authenticate_user!
@@ -11,7 +11,9 @@ respond_to :json, :html
     end
   end
   #==
+
   protected
+
   def update_allowed_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password) }
